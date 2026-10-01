@@ -1,26 +1,78 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  --color-sandstone: #933d2d;
+  --color-sandstone-dark: #762f22;
+  --color-sandstone-light: #b54f3c;
+  --color-cream: #faf7f2;
+  --color-cream-muted: #f4efe6;
+  --color-cream-dark: #eae2d5;
+  --color-charcoal: #1a1d24;
+  --color-charcoal-light: #262a34;
+  --color-wood: #5a3d28;
+  --color-forest: #274436;
+  --color-gold: #c5a059;
+  --color-gold-light: #dfb971;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
+@layer base {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #faf7f2;
+    --foreground: #1a1d24;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    font-family: var(--font-sans), system-ui, -apple-system, sans-serif;
+  }
+
+  body {
+    background-color: #faf7f2;
+    color: #1a1d24;
+    overflow-x: hidden;
+  }
+
+  /* Custom typography classes */
+  h1, h2, h3, h4, .font-serif-palace {
+    font-family: var(--font-serif), Georgia, serif;
+    letter-spacing: -0.01em;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* Fallback direct CSS classes */
+.bg-sandstone { background-color: #933d2d; }
+.bg-sandstone-dark { background-color: #762f22; }
+.bg-cream { background-color: #faf7f2; }
+.bg-cream-muted { background-color: #f4efe6; }
+.bg-charcoal { background-color: #1a1d24; }
+.bg-charcoal-light { background-color: #262a34; }
+.bg-wood { background-color: #5a3d28; }
+.bg-forest { background-color: #274436; }
+
+.text-sandstone { color: #933d2d; }
+.text-gold { color: #c5a059; }
+.text-cream { color: #faf7f2; }
+.text-charcoal { color: #1a1d24; }
+
+.border-gold { border-color: #c5a059; }
+.border-sandstone { border-color: #933d2d; }
+
+/* Custom subtle scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #1a1d24;
+}
+::-webkit-scrollbar-thumb {
+  background: #5a3d28;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #933d2d;
+}
+
+/* Custom HTML5 Date Input */
+input[type="date"] {
+  color-scheme: light dark;
 }

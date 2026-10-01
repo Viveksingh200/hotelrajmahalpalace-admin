@@ -1,0 +1,15 @@
+export const HOTEL_INFO = {
+  name: "Hotel Rajmahal Palace",
+  tagline: "Where heritage meets the serenity of the hills",
+  heroSubtitle: "A Stay Beyond Ordinary",
+  heroDescription: "An Indian heritage-inspired resort nestled amidst peaceful hills, lush valleys, and authentic architectural magnificence.",
+  phone: "+91 70706 16464",
+  email: "rajmahalpalace03@gmail.com",
+  address: "Mukam Post Shirgaon, Rajgurunagar Road, NH 60, Taluka Khed, Dist. Pune 412402, Maharashtra, India",
+  instagramUrl: "https://www.instagram.com/rajmahalpalace04?utm_source=ig_web_button_share_sheet&igsi=ZDNlZDc0MzIxNw==",
+  coordinates: { lat: 19.0318832, lng: 73.6249857 },
+  checkInTime: "12:00 PM",
+  checkOutTime: "10:00 AM",
+  stayDurationHours: 22,
+  stayDurationDescription: "22 Hours per night (12:00 PM Check-in to 10:00 AM Check-out)",
+};
