@@ -60,6 +60,7 @@ export function exportBookingsToCSV(bookings = [], options = {}) {
   rows.push([escapeCSV("Report Title:"), escapeCSV(title)].join(","));
   rows.push([escapeCSV("Billing Period:"), escapeCSV(`${monthLabel} ${year}`)].join(","));
   rows.push([escapeCSV("Stay Policy:"), escapeCSV("22 Hours per night (Check-in 12:00 PM Noon to Check-out 10:00 AM Morning)")].join(","));
+  rows.push([escapeCSV("Refund Policy:"), escapeCSV("Strictly 100% Non-Refundable (Early check-outs & cancellations non-refundable)")].join(","));
   rows.push([escapeCSV("Filter Criteria:"), escapeCSV(filterSummary)].join(","));
   rows.push([escapeCSV("Generated On:"), escapeCSV(exportDate)].join(","));
   rows.push([escapeCSV("Hotel Contact:"), escapeCSV(`${HOTEL_INFO.phone} | ${HOTEL_INFO.email}`)].join(","));
@@ -425,6 +426,7 @@ export function printMonthlyReport(bookings = [], options = {}) {
           <div>
             <strong>Confidential Business Ledger</strong><br />
             Stay Policy: 22 Hours/night (Check-in: 12:00 PM Noon • Check-out: 10:00 AM Morning)<br />
+            Cancellation Policy: Strictly 100% Non-Refundable (Early departures & cancellations are non-refundable)<br />
             This document is an authorized proprietary record of Hotel Rajmahal Palace management console.
           </div>
           <div class="signature-line">

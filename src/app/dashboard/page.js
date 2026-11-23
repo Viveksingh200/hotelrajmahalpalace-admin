@@ -85,45 +85,45 @@ export default function AdminDashboardPage() {
           </div>
 
           {/* Metric Cards Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
             {/* Card 1: Today's Arrivals */}
-            <div className="bg-white p-5 rounded-lg border border-sandstone/20 shadow-sm space-y-3">
+            <div className="bg-white p-4 sm:p-5 rounded-lg border border-sandstone/20 shadow-sm space-y-2.5 sm:space-y-3">
               <div className="flex justify-between items-center text-sandstone">
                 <span className="text-xs font-serif uppercase tracking-wider font-semibold">
                   Today's Arrivals
                 </span>
-                <Clock className="w-5 h-5 text-gold" />
+                <Clock className="w-5 h-5 text-gold shrink-0" />
               </div>
-              <div className="text-3xl font-serif font-bold text-charcoal">
+              <div className="text-2xl sm:text-3xl font-serif font-bold text-charcoal">
                 {metrics ? metrics.todayArrivalsCount : 0}
               </div>
               <p className="text-[11px] text-charcoal/60">Guests checking in today</p>
             </div>
 
             {/* Card 2: Today's Departures */}
-            <div className="bg-white p-5 rounded-lg border border-sandstone/20 shadow-sm space-y-3">
+            <div className="bg-white p-4 sm:p-5 rounded-lg border border-sandstone/20 shadow-sm space-y-2.5 sm:space-y-3">
               <div className="flex justify-between items-center text-sandstone">
                 <span className="text-xs font-serif uppercase tracking-wider font-semibold">
                   Today's Departures
                 </span>
-                <CalendarCheck className="w-5 h-5 text-gold" />
+                <CalendarCheck className="w-5 h-5 text-gold shrink-0" />
               </div>
-              <div className="text-3xl font-serif font-bold text-charcoal">
+              <div className="text-2xl sm:text-3xl font-serif font-bold text-charcoal">
                 {metrics ? metrics.todayDeparturesCount : 0}
               </div>
               <p className="text-[11px] text-charcoal/60">Guests checking out today</p>
             </div>
 
             {/* Card 3: Room Availability */}
-            <div className="bg-white p-5 rounded-lg border border-sandstone/20 shadow-sm space-y-3">
+            <div className="bg-white p-4 sm:p-5 rounded-lg border border-sandstone/20 shadow-sm space-y-2.5 sm:space-y-3">
               <div className="flex justify-between items-center text-sandstone">
                 <span className="text-xs font-serif uppercase tracking-wider font-semibold">
                   Room Availability
                 </span>
-                <BedDouble className="w-5 h-5 text-gold" />
+                <BedDouble className="w-5 h-5 text-gold shrink-0" />
               </div>
-              <div className="flex items-baseline gap-2">
-                <span className="text-3xl font-serif font-bold text-emerald-700">
+              <div className="flex items-baseline gap-2 flex-wrap">
+                <span className="text-2xl sm:text-3xl font-serif font-bold text-emerald-700">
                   {metrics ? metrics.availableRoomsCount : 8}
                 </span>
                 <span className="text-xs text-charcoal/60 font-mono font-medium">
@@ -136,14 +136,14 @@ export default function AdminDashboardPage() {
             </div>
 
             {/* Card 4: Revenue Summary */}
-            <div className="bg-charcoal text-cream p-5 rounded-lg border border-gold/30 shadow-md space-y-3">
+            <div className="bg-charcoal text-cream p-4 sm:p-5 rounded-lg border border-gold/30 shadow-md space-y-2.5 sm:space-y-3">
               <div className="flex justify-between items-center text-gold">
                 <span className="text-xs font-serif uppercase tracking-wider font-semibold">
                   Total Verified Revenue
                 </span>
-                <TrendingUp className="w-5 h-5 text-gold" />
+                <TrendingUp className="w-5 h-5 text-gold shrink-0" />
               </div>
-              <div className="text-3xl font-serif font-bold text-white font-mono">
+              <div className="text-2xl sm:text-3xl font-serif font-bold text-white font-mono truncate">
                 ₹{metrics ? metrics.totalRevenue.toLocaleString("en-IN") : "0"}
               </div>
               <p className="text-[11px] text-cream/70">From confirmed paid bookings</p>
@@ -151,7 +151,7 @@ export default function AdminDashboardPage() {
           </div>
 
           {/* Secondary Metric Highlights */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 sm:gap-4">
             <div className="bg-cream-muted p-4 rounded border border-sandstone/20 flex items-center justify-between">
               <div>
                 <span className="text-xs text-charcoal/60 block font-serif">Total Bookings Recorded</span>
@@ -159,7 +159,7 @@ export default function AdminDashboardPage() {
                   {metrics ? metrics.totalBookings : 0}
                 </span>
               </div>
-              <CalendarCheck className="w-8 h-8 text-sandstone/40" />
+              <CalendarCheck className="w-8 h-8 text-sandstone/40 shrink-0" />
             </div>
 
             <div className="bg-cream-muted p-4 rounded border border-sandstone/20 flex items-center justify-between">
@@ -169,27 +169,27 @@ export default function AdminDashboardPage() {
                   {metrics ? metrics.confirmedBookings : 0}
                 </span>
               </div>
-              <CheckCircle className="w-8 h-8 text-emerald-600/40" />
+              <CheckCircle className="w-8 h-8 text-emerald-600/40 shrink-0" />
             </div>
 
-            <div className="bg-cream-muted p-4 rounded border border-sandstone/20 flex items-center justify-between">
+            <div className="bg-cream-muted p-4 rounded border border-sandstone/20 flex items-center justify-between sm:col-span-2 md:col-span-1">
               <div>
                 <span className="text-xs text-charcoal/60 block font-serif">Pending Payments</span>
                 <span className="text-xl font-serif font-bold text-amber-800">
                   {metrics ? metrics.pendingPayments : 0}
                 </span>
               </div>
-              <AlertCircle className="w-8 h-8 text-amber-600/40" />
+              <AlertCircle className="w-8 h-8 text-amber-600/40 shrink-0" />
             </div>
           </div>
 
           {/* Operational Tables Section */}
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8">
             {/* Today's Arrivals Section */}
-            <div className="lg:col-span-6 bg-white p-6 rounded-lg border border-sandstone/20 shadow-sm space-y-4">
+            <div className="lg:col-span-6 bg-white p-4 sm:p-6 rounded-lg border border-sandstone/20 shadow-sm space-y-4">
               <div className="flex items-center justify-between border-b border-sandstone/15 pb-3">
-                <h3 className="text-lg font-serif text-charcoal">Today's Arrivals</h3>
-                <span className="text-xs bg-sandstone/10 text-sandstone px-2.5 py-1 rounded font-serif">
+                <h3 className="text-base sm:text-lg font-serif text-charcoal">Today's Arrivals</h3>
+                <span className="text-xs bg-sandstone/10 text-sandstone px-2.5 py-1 rounded font-serif font-medium">
                   {metrics?.todayArrivals?.length || 0} Expected
                 </span>
               </div>
@@ -203,18 +203,18 @@ export default function AdminDashboardPage() {
                   {metrics?.todayArrivals?.map((b) => (
                     <div
                       key={b.id}
-                      className="p-3 bg-cream-muted rounded border border-sandstone/10 flex items-center justify-between text-xs"
+                      className="p-3 bg-cream-muted rounded border border-sandstone/10 flex items-center justify-between gap-3 text-xs"
                     >
-                      <div>
-                        <span className="font-mono font-bold text-sandstone block">{b.booking_reference}</span>
-                        <span className="font-semibold text-charcoal text-sm">{b.customer_name}</span>
-                        <span className="text-[11px] text-charcoal/60 block">{b.room?.room_name || b.room_id}</span>
+                      <div className="min-w-0">
+                        <span className="font-mono font-bold text-sandstone block truncate">{b.booking_reference}</span>
+                        <span className="font-semibold text-charcoal text-sm block truncate">{b.customer_name}</span>
+                        <span className="text-[11px] text-charcoal/60 block truncate">{b.room?.room_name || b.room_id}</span>
                       </div>
-                      <div className="text-right">
+                      <div className="text-right shrink-0">
                         <span className="text-xs font-mono font-bold text-charcoal block">
                           ₹{Number(b.total_amount || 0).toLocaleString("en-IN")}
                         </span>
-                        <span className="text-[10px] bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded font-semibold uppercase">
+                        <span className="text-[10px] bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded font-semibold uppercase inline-block">
                           {b.payment_status}
                         </span>
                       </div>
@@ -225,10 +225,10 @@ export default function AdminDashboardPage() {
             </div>
 
             {/* Today's Departures Section */}
-            <div className="lg:col-span-6 bg-white p-6 rounded-lg border border-sandstone/20 shadow-sm space-y-4">
+            <div className="lg:col-span-6 bg-white p-4 sm:p-6 rounded-lg border border-sandstone/20 shadow-sm space-y-4">
               <div className="flex items-center justify-between border-b border-sandstone/15 pb-3">
-                <h3 className="text-lg font-serif text-charcoal">Today's Departures</h3>
-                <span className="text-xs bg-gold/20 text-wood px-2.5 py-1 rounded font-serif">
+                <h3 className="text-base sm:text-lg font-serif text-charcoal">Today's Departures</h3>
+                <span className="text-xs bg-gold/20 text-wood px-2.5 py-1 rounded font-serif font-medium">
                   {metrics?.todayDepartures?.length || 0} Expected
                 </span>
               </div>
@@ -242,18 +242,18 @@ export default function AdminDashboardPage() {
                   {metrics?.todayDepartures?.map((b) => (
                     <div
                       key={b.id}
-                      className="p-3 bg-cream-muted rounded border border-sandstone/10 flex items-center justify-between text-xs"
+                      className="p-3 bg-cream-muted rounded border border-sandstone/10 flex items-center justify-between gap-3 text-xs"
                     >
-                      <div>
-                        <span className="font-mono font-bold text-sandstone block">{b.booking_reference}</span>
-                        <span className="font-semibold text-charcoal text-sm">{b.customer_name}</span>
-                        <span className="text-[11px] text-charcoal/60 block">{b.room?.room_name || b.room_id}</span>
+                      <div className="min-w-0">
+                        <span className="font-mono font-bold text-sandstone block truncate">{b.booking_reference}</span>
+                        <span className="font-semibold text-charcoal text-sm block truncate">{b.customer_name}</span>
+                        <span className="text-[11px] text-charcoal/60 block truncate">{b.room?.room_name || b.room_id}</span>
                       </div>
-                      <div className="text-right">
+                      <div className="text-right shrink-0">
                         <span className="text-xs font-mono font-bold text-charcoal block">
                           ₹{Number(b.total_amount || 0).toLocaleString("en-IN")}
                         </span>
-                        <span className="text-[10px] bg-blue-100 text-blue-800 px-2 py-0.5 rounded font-semibold uppercase">
+                        <span className="text-[10px] bg-blue-100 text-blue-800 px-2 py-0.5 rounded font-semibold uppercase inline-block">
                           CHECK-OUT
                         </span>
                       </div>
@@ -265,14 +265,14 @@ export default function AdminDashboardPage() {
           </div>
 
           {/* Recent Bookings List */}
-          <div className="bg-white p-6 rounded-lg border border-sandstone/20 shadow-sm space-y-4">
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-sandstone/15 pb-3">
+          <div className="bg-white p-4 sm:p-6 rounded-lg border border-sandstone/20 shadow-sm space-y-4">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-sandstone/15 pb-3">
               <div>
-                <h3 className="text-lg font-serif text-charcoal">Recent Bookings Record</h3>
+                <h3 className="text-base sm:text-lg font-serif text-charcoal">Recent Bookings Record</h3>
                 <p className="text-xs text-charcoal/60">Latest reservation requests processed by system</p>
               </div>
 
-              <div className="flex items-center gap-3">
+              <div className="flex flex-wrap items-center gap-2.5">
                 <button
                   onClick={() => setMonthlyDownloadOpen(true)}
                   className="flex items-center gap-1.5 px-3 py-1.5 rounded bg-sandstone/10 hover:bg-sandstone hover:text-white text-sandstone border border-sandstone/30 text-xs font-serif transition-colors cursor-pointer"
@@ -292,10 +292,10 @@ export default function AdminDashboardPage() {
               </div>
             </div>
 
-            <div className="overflow-x-auto">
-              <table className="w-full text-left text-xs font-sans border-collapse">
+            <div className="overflow-x-auto -mx-4 sm:mx-0 px-4 sm:px-0">
+              <table className="w-full text-left text-xs font-sans border-collapse min-w-[700px]">
                 <thead>
-                  <tr className="bg-charcoal text-cream font-serif text-[11px] uppercase tracking-wider">
+                  <tr className="bg-charcoal text-cream font-serif text-[11px] uppercase tracking-wider whitespace-nowrap">
                     <th className="p-3">Reference</th>
                     <th className="p-3">Guest Name</th>
                     <th className="p-3">Phone</th>
@@ -306,12 +306,12 @@ export default function AdminDashboardPage() {
                     <th className="p-3 text-center">Status</th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-sandstone/10">
+                <tbody className="divide-y divide-sandstone/10 whitespace-nowrap">
                   {metrics?.recentBookings?.map((b) => (
                     <tr key={b.id} className="hover:bg-cream-muted/50 transition-colors">
                       <td className="p-3 font-mono font-bold text-sandstone">{b.booking_reference}</td>
                       <td className="p-3 font-medium text-charcoal">{b.customer_name}</td>
-                      <td className="p-3 text-charcoal/70">{b.customer_phone}</td>
+                      <td className="p-3 text-charcoal/70 font-mono">{b.customer_phone}</td>
                       <td className="p-3 font-mono">{b.check_in}</td>
                       <td className="p-3 font-mono">{b.check_out}</td>
                       <td className="p-3 font-mono font-bold text-charcoal text-right">

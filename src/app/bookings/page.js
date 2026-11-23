@@ -135,14 +135,14 @@ export default function AdminBookingsPage() {
           </div>
 
           {/* Filters & Search Control Bar */}
-          <div className="bg-white p-5 rounded-lg border border-sandstone/20 shadow-sm space-y-4">
-            <div className="grid grid-cols-1 md:grid-cols-12 gap-4">
+          <div className="bg-white p-4 sm:p-5 rounded-lg border border-sandstone/20 shadow-sm space-y-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-3 sm:gap-4">
               {/* Search Bar */}
-              <div className="md:col-span-4 relative">
+              <div className="sm:col-span-2 lg:col-span-4 relative">
                 <Search className="w-4 h-4 text-charcoal/50 absolute left-3 top-3" />
                 <input
                   type="text"
-                  placeholder="Search by Guest Name, Phone, or Booking Ref (RMP-XXXXXX)..."
+                  placeholder="Search Guest Name, Phone, or Ref..."
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                   className="w-full pl-9 pr-4 py-2 bg-cream-muted border border-sandstone/30 rounded text-xs focus:outline-none focus:border-sandstone"
@@ -150,7 +150,7 @@ export default function AdminBookingsPage() {
               </div>
 
               {/* Status Filter */}
-              <div className="md:col-span-2">
+              <div className="sm:col-span-1 lg:col-span-2">
                 <select
                   value={statusFilter}
                   onChange={(e) => setStatusFilter(e.target.value)}
@@ -165,7 +165,7 @@ export default function AdminBookingsPage() {
               </div>
 
               {/* Payment Filter */}
-              <div className="md:col-span-2">
+              <div className="sm:col-span-1 lg:col-span-2">
                 <select
                   value={paymentFilter}
                   onChange={(e) => setPaymentFilter(e.target.value)}
@@ -180,7 +180,7 @@ export default function AdminBookingsPage() {
               </div>
 
               {/* Room Filter */}
-              <div className="md:col-span-4">
+              <div className="sm:col-span-2 lg:col-span-4">
                 <select
                   value={roomFilter}
                   onChange={(e) => setRoomFilter(e.target.value)}
@@ -197,13 +197,13 @@ export default function AdminBookingsPage() {
             </div>
 
             {/* Date Range Controls & Filter Actions */}
-            <div className="flex flex-wrap items-center justify-between gap-3 pt-2 border-t border-sandstone/10 text-xs font-serif text-charcoal/70">
-              <div className="flex flex-wrap items-center gap-3">
-                <span className="text-sandstone font-bold uppercase tracking-wider text-[10px]">
-                  Date Range Filter:
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pt-3 border-t border-sandstone/10 text-xs font-serif text-charcoal/70">
+              <div className="flex flex-wrap items-center gap-2.5 sm:gap-3">
+                <span className="text-sandstone font-bold uppercase tracking-wider text-[10px] shrink-0">
+                  Date Range:
                 </span>
-                <div className="flex items-center gap-2">
-                  <span>From:</span>
+                <div className="flex items-center gap-1.5 flex-wrap">
+                  <span className="text-[11px]">From:</span>
                   <input
                     type="date"
                     value={dateFrom}
@@ -211,8 +211,8 @@ export default function AdminBookingsPage() {
                     className="bg-cream-muted border border-sandstone/30 px-2 py-1 rounded font-mono text-xs"
                   />
                 </div>
-                <div className="flex items-center gap-2">
-                  <span>To:</span>
+                <div className="flex items-center gap-1.5 flex-wrap">
+                  <span className="text-[11px]">To:</span>
                   <input
                     type="date"
                     value={dateTo}
@@ -222,12 +222,12 @@ export default function AdminBookingsPage() {
                 </div>
               </div>
 
-              <div className="flex items-center gap-3">
+              <div className="flex items-center gap-3 flex-wrap">
                 {/* Export Current View Button */}
                 {bookings.length > 0 && (
                   <button
                     onClick={handleQuickExportFiltered}
-                    className="flex items-center gap-1 text-xs text-sandstone hover:text-sandstone-dark font-serif underline cursor-pointer"
+                    className="flex items-center gap-1 text-xs text-sandstone hover:text-sandstone-dark font-serif underline cursor-pointer font-medium"
                     title="Quick download currently displayed table records as CSV"
                   >
                     <Download className="w-3.5 h-3.5" />
@@ -245,7 +245,7 @@ export default function AdminBookingsPage() {
                       setDateFrom("");
                       setDateTo("");
                     }}
-                    className="text-xs text-sandstone underline"
+                    className="text-xs text-sandstone underline cursor-pointer"
                   >
                     Clear Filters
                   </button>
@@ -257,9 +257,9 @@ export default function AdminBookingsPage() {
           {/* Bookings Ledger Table */}
           <div className="bg-white rounded-lg border border-sandstone/20 shadow-sm overflow-hidden">
             <div className="overflow-x-auto">
-              <table className="w-full text-left text-xs font-sans border-collapse">
+              <table className="w-full text-left text-xs font-sans border-collapse min-w-[850px]">
                 <thead>
-                  <tr className="bg-charcoal text-cream font-serif text-[11px] uppercase tracking-wider">
+                  <tr className="bg-charcoal text-cream font-serif text-[11px] uppercase tracking-wider whitespace-nowrap">
                     <th className="p-3.5">Booking ID</th>
                     <th className="p-3.5">Guest</th>
                     <th className="p-3.5">Phone</th>
@@ -273,7 +273,7 @@ export default function AdminBookingsPage() {
                     <th className="p-3.5 text-center">Action</th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-sandstone/10">
+                <tbody className="divide-y divide-sandstone/10 whitespace-nowrap">
                   {bookings.length === 0 ? (
                     <tr>
                       <td colSpan={11} className="p-8 text-center text-xs text-charcoal/60 font-serif italic">
@@ -298,7 +298,7 @@ export default function AdminBookingsPage() {
                         </td>
                         <td className="p-3.5 text-center">
                           <span
-                            className={`px-2 py-0.5 rounded text-[10px] font-semibold uppercase ${
+                            className={`px-2 py-0.5 rounded text-[10px] font-semibold uppercase inline-block ${
                               b.payment_status === "paid"
                                 ? "bg-emerald-100 text-emerald-800"
                                 : b.payment_status === "failed"
@@ -311,7 +311,7 @@ export default function AdminBookingsPage() {
                         </td>
                         <td className="p-3.5 text-center">
                           <span
-                            className={`px-2 py-0.5 rounded text-[10px] font-semibold uppercase ${
+                            className={`px-2 py-0.5 rounded text-[10px] font-semibold uppercase inline-block ${
                               b.booking_status === "confirmed"
                                 ? "bg-emerald-100 text-emerald-800"
                                 : b.booking_status === "cancelled"
@@ -343,31 +343,31 @@ export default function AdminBookingsPage() {
 
           {/* Detailed Booking Modal */}
           {selectedBooking && (
-            <div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4">
-              <div className="bg-cream text-charcoal w-full max-w-2xl rounded-lg shadow-2xl border-2 border-gold/40 overflow-hidden relative animate-in fade-in zoom-in-95 duration-200">
+            <div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-3 sm:p-5 overflow-y-auto">
+              <div className="bg-cream text-charcoal w-full max-w-2xl rounded-xl shadow-2xl border-2 border-gold/40 overflow-hidden relative my-auto animate-in fade-in zoom-in-95 duration-200">
                 {/* Modal Header */}
-                <div className="bg-charcoal text-cream p-5 flex items-center justify-between border-b border-gold/30">
-                  <div className="flex items-center gap-2">
-                    <Sparkles className="w-5 h-5 text-gold" />
-                    <div>
-                      <span className="text-[10px] uppercase font-mono tracking-widest text-gold block">
+                <div className="bg-charcoal text-cream p-4 sm:p-5 flex items-center justify-between border-b border-gold/30">
+                  <div className="flex items-center gap-2.5">
+                    <Sparkles className="w-5 h-5 text-gold shrink-0" />
+                    <div className="min-w-0">
+                      <span className="text-[10px] uppercase font-mono tracking-widest text-gold block truncate">
                         BOOKING VOUCHER DETAILS
                       </span>
-                      <h3 className="text-xl font-serif text-white">
+                      <h3 className="text-lg sm:text-xl font-serif text-white truncate">
                         {selectedBooking.booking_reference}
                       </h3>
                     </div>
                   </div>
                   <button
                     onClick={() => setSelectedBooking(null)}
-                    className="p-1.5 rounded hover:bg-white/10 text-cream/70 hover:text-white transition-colors cursor-pointer"
+                    className="p-1.5 rounded-full hover:bg-white/10 text-cream/70 hover:text-white transition-colors cursor-pointer shrink-0"
                   >
                     <X className="w-5 h-5" />
                   </button>
                 </div>
 
                 {/* Modal Body */}
-                <div className="p-6 space-y-6">
+                <div className="p-4 sm:p-6 space-y-5 max-h-[calc(85vh-120px)] overflow-y-auto">
                   {/* Guest & Room Grid */}
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div className="bg-white p-4 rounded border border-sandstone/20 space-y-2">
@@ -376,12 +376,12 @@ export default function AdminBookingsPage() {
                       </span>
                       <div className="text-xs space-y-1">
                         <p className="font-semibold text-charcoal text-sm">{selectedBooking.customer_name}</p>
-                        <p className="text-charcoal/70 flex items-center gap-1.5">
-                          <Mail className="w-3.5 h-3.5 text-sandstone" />
+                        <p className="text-charcoal/70 flex items-center gap-1.5 break-all">
+                          <Mail className="w-3.5 h-3.5 text-sandstone shrink-0" />
                           <span>{selectedBooking.customer_email}</span>
                         </p>
                         <p className="text-charcoal/70 flex items-center gap-1.5">
-                          <Phone className="w-3.5 h-3.5 text-sandstone" />
+                          <Phone className="w-3.5 h-3.5 text-sandstone shrink-0" />
                           <span>{selectedBooking.customer_phone}</span>
                         </p>
                         <p className="text-charcoal/70">Occupancy: {selectedBooking.guests} Guests</p>
@@ -404,8 +404,8 @@ export default function AdminBookingsPage() {
                   </div>
 
                   {/* Payment Details Card */}
-                  <div className="bg-charcoal text-cream p-5 rounded-lg border border-gold/30 space-y-3">
-                    <div className="flex justify-between items-center border-b border-white/10 pb-2 text-xs">
+                  <div className="bg-charcoal text-cream p-4 sm:p-5 rounded-lg border border-gold/30 space-y-3">
+                    <div className="flex flex-wrap items-center justify-between border-b border-white/10 pb-2 text-xs gap-2">
                       <span className="text-gold font-serif uppercase tracking-wider font-bold">
                         Billing & Payment Verification
                       </span>
@@ -414,7 +414,7 @@ export default function AdminBookingsPage() {
                       </span>
                     </div>
 
-                    <div className="grid grid-cols-2 gap-3 text-xs">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
                       <div>
                         <span className="text-cream/60 block text-[11px]">Payment Status</span>
                         <span className="font-semibold uppercase text-emerald-400 font-serif">
@@ -428,15 +428,15 @@ export default function AdminBookingsPage() {
                         </span>
                       </div>
                       {selectedBooking.razorpay_order_id && (
-                        <div>
+                        <div className="sm:col-span-2">
                           <span className="text-cream/60 block text-[11px]">Razorpay Order ID</span>
-                          <span className="font-mono text-[11px] text-cream/90">{selectedBooking.razorpay_order_id}</span>
+                          <span className="font-mono text-[11px] text-cream/90 break-all">{selectedBooking.razorpay_order_id}</span>
                         </div>
                       )}
                       {selectedBooking.razorpay_payment_id && (
-                        <div>
+                        <div className="sm:col-span-2">
                           <span className="text-cream/60 block text-[11px]">Razorpay Payment ID</span>
-                          <span className="font-mono text-[11px] text-cream/90">{selectedBooking.razorpay_payment_id}</span>
+                          <span className="font-mono text-[11px] text-cream/90 break-all">{selectedBooking.razorpay_payment_id}</span>
                         </div>
                       )}
                     </div>
@@ -449,38 +449,50 @@ export default function AdminBookingsPage() {
                     )}
                   </div>
 
+                  {/* Non-Refundable Policy Notice */}
+                  <div className="p-3 bg-sandstone/10 border border-sandstone/30 rounded text-xs text-charcoal/80 flex items-start gap-2">
+                    <span className="font-serif font-bold text-sandstone uppercase text-[10px] tracking-wider block shrink-0 mt-0.5">
+                      POLICY:
+                    </span>
+                    <span className="text-[11px] leading-relaxed">
+                      <strong>Strict Non-Refundable Policy:</strong> All reservations, early check-outs, and cancellations are strictly 100% non-refundable under the Hotel Rajmahal Palace 22-hour stay terms.
+                    </span>
+                  </div>
+
                   {/* Admin Actions */}
                   <div className="pt-2 space-y-2">
                     <span className="text-xs font-serif uppercase tracking-wider text-sandstone font-bold block">
                       Admin Quick Actions
                     </span>
 
-                    <div className="flex flex-wrap gap-3">
+                    <div className="flex flex-col sm:flex-row flex-wrap gap-2.5">
                       <button
                         onClick={() => handleUpdateStatus(selectedBooking.id, "confirmed", "paid")}
                         disabled={actionLoading}
-                        className="px-4 py-2 rounded bg-emerald-700 hover:bg-emerald-800 text-white text-xs font-serif uppercase tracking-wider flex items-center gap-1.5 shadow cursor-pointer disabled:opacity-50"
+                        className="px-4 py-2.5 rounded bg-emerald-700 hover:bg-emerald-800 text-white text-xs font-serif uppercase tracking-wider flex items-center justify-center gap-1.5 shadow cursor-pointer disabled:opacity-50 font-medium"
                       >
                         <CheckCircle className="w-4 h-4" />
                         <span>Confirm & Mark Paid</span>
                       </button>
 
                       <button
-                        onClick={() => handleUpdateStatus(selectedBooking.id, "completed", selectedBooking.payment_status)}
+                        onClick={() => handleUpdateStatus(selectedBooking.id, "completed", selectedBooking.payment_status || "paid")}
                         disabled={actionLoading}
-                        className="px-4 py-2 rounded bg-blue-700 hover:bg-blue-800 text-white text-xs font-serif uppercase tracking-wider flex items-center gap-1.5 shadow cursor-pointer disabled:opacity-50"
+                        className="px-4 py-2.5 rounded bg-blue-700 hover:bg-blue-800 text-white text-xs font-serif uppercase tracking-wider flex items-center justify-center gap-1.5 shadow cursor-pointer disabled:opacity-50 font-medium"
+                        title="Guest check-out (regular or early departure) - frees room inventory"
                       >
                         <CheckCircle className="w-4 h-4" />
-                        <span>Mark Stay Completed</span>
+                        <span>Stay Completed / Early Departure</span>
                       </button>
 
                       <button
-                        onClick={() => handleUpdateStatus(selectedBooking.id, "cancelled", "refunded")}
+                        onClick={() => handleUpdateStatus(selectedBooking.id, "cancelled", selectedBooking.payment_status || "paid")}
                         disabled={actionLoading}
-                        className="px-4 py-2 rounded bg-red-800 hover:bg-red-900 text-white text-xs font-serif uppercase tracking-wider flex items-center gap-1.5 shadow cursor-pointer disabled:opacity-50"
+                        className="px-4 py-2.5 rounded bg-red-800 hover:bg-red-900 text-white text-xs font-serif uppercase tracking-wider flex items-center justify-center gap-1.5 shadow cursor-pointer disabled:opacity-50 font-medium"
+                        title="Cancel reservation - strictly non-refundable"
                       >
                         <XCircle className="w-4 h-4" />
-                        <span>Cancel Booking</span>
+                        <span>Cancel (Non-Refundable)</span>
                       </button>
                     </div>
                   </div>

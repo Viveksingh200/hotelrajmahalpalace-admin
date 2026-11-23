@@ -353,12 +353,12 @@ export default function MonthlyDownloadModal({
           </div>
 
           {/* Monthly KPI Analytics Summary Banner */}
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
             <div className="bg-white p-3.5 rounded-lg border border-sandstone/20 shadow-xs">
               <span className="text-[10px] uppercase font-serif tracking-wider text-sandstone font-bold block">
                 Total Bookings
               </span>
-              <div className="text-2xl font-serif font-bold text-charcoal mt-1">{stats.totalCount}</div>
+              <div className="text-xl sm:text-2xl font-serif font-bold text-charcoal mt-1">{stats.totalCount}</div>
               <span className="text-[11px] text-charcoal/60">
                 {stats.confirmedCount} confirmed stays
               </span>
@@ -368,7 +368,7 @@ export default function MonthlyDownloadModal({
               <span className="text-[10px] uppercase font-serif tracking-wider text-sandstone font-bold block">
                 Total Room Nights
               </span>
-              <div className="text-2xl font-serif font-bold text-charcoal mt-1">
+              <div className="text-xl sm:text-2xl font-serif font-bold text-charcoal mt-1">
                 {stats.totalNights} <span className="text-xs font-normal">Nights</span>
               </div>
               <span className="text-[11px] text-charcoal/60">Guest occupancy</span>
@@ -378,7 +378,7 @@ export default function MonthlyDownloadModal({
               <span className="text-[10px] uppercase font-serif tracking-wider text-emerald-700 font-bold block">
                 Verified Paid Revenue
               </span>
-              <div className="text-2xl font-serif font-bold text-emerald-800 font-mono mt-1">
+              <div className="text-xl sm:text-2xl font-serif font-bold text-emerald-800 font-mono mt-1 truncate">
                 ₹{stats.verifiedRevenue.toLocaleString("en-IN")}
               </div>
               <span className="text-[11px] text-charcoal/60">
@@ -390,7 +390,7 @@ export default function MonthlyDownloadModal({
               <span className="text-[10px] uppercase font-serif tracking-wider text-gold font-bold block">
                 Gross Expected
               </span>
-              <div className="text-2xl font-serif font-bold text-white font-mono mt-1">
+              <div className="text-xl sm:text-2xl font-serif font-bold text-white font-mono mt-1 truncate">
                 ₹{stats.grossPotentialRevenue.toLocaleString("en-IN")}
               </div>
               <span className="text-[11px] text-cream/70">
@@ -400,27 +400,27 @@ export default function MonthlyDownloadModal({
           </div>
 
           {/* Records Preview Table */}
-          <div className="bg-white rounded-lg border border-sandstone/20 shadow-sm overflow-hidden space-y-2 p-4">
+          <div className="bg-white rounded-lg border border-sandstone/20 shadow-sm overflow-hidden space-y-2 p-3 sm:p-4">
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-2">
-                <FileSpreadsheet className="w-4 h-4 text-sandstone" />
-                <h4 className="text-xs font-serif uppercase tracking-wider font-bold text-charcoal">
-                  Itemized Monthly Ledger Preview ({filteredBookings.length} records)
+                <FileSpreadsheet className="w-4 h-4 text-sandstone shrink-0" />
+                <h4 className="text-xs font-serif uppercase tracking-wider font-bold text-charcoal truncate">
+                  Monthly Ledger Preview ({filteredBookings.length} records)
                 </h4>
               </div>
               <button
                 type="button"
                 onClick={() => setShowPreview(!showPreview)}
-                className="text-xs text-sandstone hover:underline font-serif"
+                className="text-xs text-sandstone hover:underline font-serif shrink-0 cursor-pointer"
               >
                 {showPreview ? "Hide Preview" : "Show Preview"}
               </button>
             </div>
 
             {showPreview && (
-              <div className="max-h-56 overflow-y-auto border border-sandstone/15 rounded">
-                <table className="w-full text-left text-xs font-sans border-collapse">
-                  <thead className="sticky top-0 bg-charcoal text-cream font-serif text-[10px] uppercase tracking-wider">
+              <div className="max-h-56 overflow-y-auto overflow-x-auto border border-sandstone/15 rounded">
+                <table className="w-full text-left text-xs font-sans border-collapse min-w-[650px]">
+                  <thead className="sticky top-0 bg-charcoal text-cream font-serif text-[10px] uppercase tracking-wider whitespace-nowrap">
                     <tr>
                       <th className="p-2.5">Ref</th>
                       <th className="p-2.5">Guest</th>
@@ -432,7 +432,7 @@ export default function MonthlyDownloadModal({
                       <th className="p-2.5 text-center">Status</th>
                     </tr>
                   </thead>
-                  <tbody className="divide-y divide-sandstone/10">
+                  <tbody className="divide-y divide-sandstone/10 whitespace-nowrap">
                     {filteredBookings.length === 0 ? (
                       <tr>
                         <td colSpan={8} className="p-6 text-center text-xs text-charcoal/60 font-serif italic">

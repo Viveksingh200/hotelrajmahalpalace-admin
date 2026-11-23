@@ -203,12 +203,12 @@ export default function AdminRoomsPage() {
                   </div>
 
                   {/* Card Content Details */}
-                  <div className="p-5 space-y-4">
+                  <div className="p-4 sm:p-5 space-y-4">
                     {/* Live Price Per Night Management Box */}
-                    <div className="bg-cream-muted/70 border border-sandstone/25 rounded-lg p-3.5 space-y-2">
+                    <div className="bg-cream-muted/70 border border-sandstone/25 rounded-lg p-3 sm:p-4 space-y-2.5">
                       <div className="flex items-center justify-between">
-                        <span className="text-[10.5px] uppercase font-mono tracking-wider text-sandstone font-bold flex items-center gap-1.5">
-                          <Tag className="w-3.5 h-3.5 text-sandstone" />
+                        <span className="text-[10px] sm:text-[10.5px] uppercase font-mono tracking-wider text-sandstone font-bold flex items-center gap-1.5">
+                          <Tag className="w-3.5 h-3.5 text-sandstone shrink-0" />
                           <span>NIGHTLY RATE (PRICE)</span>
                         </span>
 
@@ -226,8 +226,8 @@ export default function AdminRoomsPage() {
 
                       {editingPriceId === room.id ? (
                         <div className="space-y-2.5 pt-1">
-                          <div className="flex items-center gap-2">
-                            <div className="relative flex-1">
+                          <div className="flex flex-wrap sm:flex-nowrap items-center gap-2">
+                            <div className="relative flex-1 min-w-[140px]">
                               <span className="absolute left-3 top-1/2 -translate-y-1/2 font-serif text-charcoal font-bold">₹</span>
                               <input
                                 type="number"
@@ -241,24 +241,26 @@ export default function AdminRoomsPage() {
                               />
                             </div>
 
-                            <button
-                              type="button"
-                              onClick={() => handleSavePrice(room.id)}
-                              disabled={isSavingPrice}
-                              className="px-3.5 py-2 bg-sandstone hover:bg-[#7a3224] text-white text-xs font-serif rounded flex items-center gap-1 cursor-pointer font-semibold shadow disabled:opacity-50"
-                            >
-                              {isSavingPrice ? <RefreshCw className="w-3.5 h-3.5 animate-spin" /> : <Check className="w-3.5 h-3.5" />}
-                              <span>Save</span>
-                            </button>
+                            <div className="flex items-center gap-2 shrink-0">
+                              <button
+                                type="button"
+                                onClick={() => handleSavePrice(room.id)}
+                                disabled={isSavingPrice}
+                                className="px-3.5 py-2 bg-sandstone hover:bg-[#7a3224] text-white text-xs font-serif rounded flex items-center gap-1 cursor-pointer font-semibold shadow disabled:opacity-50"
+                              >
+                                {isSavingPrice ? <RefreshCw className="w-3.5 h-3.5 animate-spin" /> : <Check className="w-3.5 h-3.5" />}
+                                <span>Save</span>
+                              </button>
 
-                            <button
-                              type="button"
-                              onClick={() => setEditingPriceId(null)}
-                              disabled={isSavingPrice}
-                              className="px-2.5 py-2 bg-white border border-sandstone/30 text-charcoal text-xs font-serif rounded hover:bg-cream-muted cursor-pointer"
-                            >
-                              <X className="w-3.5 h-3.5" />
-                            </button>
+                              <button
+                                type="button"
+                                onClick={() => setEditingPriceId(null)}
+                                disabled={isSavingPrice}
+                                className="px-2.5 py-2 bg-white border border-sandstone/30 text-charcoal text-xs font-serif rounded hover:bg-cream-muted cursor-pointer"
+                              >
+                                <X className="w-3.5 h-3.5" />
+                              </button>
+                            </div>
                           </div>
 
                           {/* Quick Presets */}
@@ -278,8 +280,8 @@ export default function AdminRoomsPage() {
                         </div>
                       ) : (
                         <div className="flex items-baseline justify-between pt-0.5">
-                          <div className="flex items-baseline gap-1.5">
-                            <span className="text-2xl font-serif font-bold text-sandstone">
+                          <div className="flex items-baseline gap-1.5 flex-wrap">
+                            <span className="text-xl sm:text-2xl font-serif font-bold text-sandstone">
                               ₹{Number(room.price_per_night !== undefined ? room.price_per_night : (room.pricePerNight || 0)).toLocaleString('en-IN')}
                             </span>
                             <span className="text-xs text-charcoal/60 font-sans">
@@ -290,16 +292,16 @@ export default function AdminRoomsPage() {
                       )}
                     </div>
 
-                    <div className="grid grid-cols-3 gap-2 text-xs border-b border-sandstone/15 pb-3">
-                      <div>
+                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5 sm:gap-2 text-xs border-b border-sandstone/15 pb-3">
+                      <div className="p-2 sm:p-0 bg-cream-muted/50 sm:bg-transparent rounded sm:rounded-none">
                         <span className="text-charcoal/60 block text-[10px]">Total Inventory</span>
                         <span className="font-semibold text-sandstone font-mono">8 Identical Rooms</span>
                       </div>
-                      <div>
+                      <div className="p-2 sm:p-0 bg-cream-muted/50 sm:bg-transparent rounded sm:rounded-none">
                         <span className="text-charcoal/60 block text-[10px]">Max Guests</span>
                         <span className="font-semibold text-charcoal">{room.max_guests || room.maxGuests} Guests</span>
                       </div>
-                      <div>
+                      <div className="p-2 sm:p-0 bg-cream-muted/50 sm:bg-transparent rounded sm:rounded-none">
                         <span className="text-charcoal/60 block text-[10px]">Bed Type</span>
                         <span className="font-semibold text-charcoal">{room.bed_type || room.bedType || "King Bed"}</span>
                       </div>
@@ -315,43 +317,43 @@ export default function AdminRoomsPage() {
                         Set Availability Status:
                       </span>
 
-                      <div className="grid grid-cols-3 gap-2">
+                      <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
                         <button
                           onClick={() => handleStatusChange(room.id, "available")}
                           disabled={isUpdating || status === "available"}
-                          className={`py-2 px-2 rounded text-[11px] font-serif uppercase tracking-wider flex items-center justify-center gap-1 border transition-all cursor-pointer ${
+                          className={`py-2.5 px-3 rounded text-[11px] font-serif uppercase tracking-wider flex items-center justify-center gap-1.5 border transition-all cursor-pointer ${
                             status === "available"
                               ? "bg-emerald-700 text-white border-emerald-800 font-bold shadow"
                               : "bg-cream-muted text-charcoal hover:bg-emerald-100 border-sandstone/20"
                           }`}
                         >
-                          <CheckCircle className="w-3.5 h-3.5" />
+                          <CheckCircle className="w-4 h-4 shrink-0" />
                           <span>AVAILABLE</span>
                         </button>
 
                         <button
                           onClick={() => handleStatusChange(room.id, "unavailable")}
                           disabled={isUpdating || status === "unavailable"}
-                          className={`py-2 px-2 rounded text-[11px] font-serif uppercase tracking-wider flex items-center justify-center gap-1 border transition-all cursor-pointer ${
+                          className={`py-2.5 px-3 rounded text-[11px] font-serif uppercase tracking-wider flex items-center justify-center gap-1.5 border transition-all cursor-pointer ${
                             status === "unavailable"
                               ? "bg-red-700 text-white border-red-800 font-bold shadow"
                               : "bg-cream-muted text-charcoal hover:bg-red-100 border-sandstone/20"
                           }`}
                         >
-                          <XCircle className="w-3.5 h-3.5" />
+                          <XCircle className="w-4 h-4 shrink-0" />
                           <span>UNAVAILABLE</span>
                         </button>
 
                         <button
                           onClick={() => handleStatusChange(room.id, "maintenance")}
                           disabled={isUpdating || status === "maintenance"}
-                          className={`py-2 px-2 rounded text-[11px] font-serif uppercase tracking-wider flex items-center justify-center gap-1 border transition-all cursor-pointer ${
+                          className={`py-2.5 px-3 rounded text-[11px] font-serif uppercase tracking-wider flex items-center justify-center gap-1.5 border transition-all cursor-pointer ${
                             status === "maintenance"
                               ? "bg-amber-600 text-white border-amber-700 font-bold shadow"
                               : "bg-cream-muted text-charcoal hover:bg-amber-100 border-sandstone/20"
                           }`}
                         >
-                          <Wrench className="w-3.5 h-3.5" />
+                          <Wrench className="w-4 h-4 shrink-0" />
                           <span>MAINTAIN</span>
                         </button>
                       </div>
