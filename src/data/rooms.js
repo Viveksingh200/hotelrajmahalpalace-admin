@@ -11,9 +11,10 @@ export const ROOMS_DATA = [
     maxChildren: 2,
     bedType: "King Heritage Bed",
     view: "Palace Courtyard & Hill Garden",
-    featuredImage: "/images/room2.png",
+    featuredImage: "/images/rooms.png",
     gallery: [
       "/images/rooms.png",
+      "/images/rooms2.png",
     ],
     description: "Designed with polished dark marble, handcrafted teak furnishings, and private step-out balcony overlooking misty hill panoramas.",
     amenities: [

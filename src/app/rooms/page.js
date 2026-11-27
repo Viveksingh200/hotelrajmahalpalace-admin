@@ -151,20 +151,19 @@ export default function AdminRoomsPage() {
               return (
                 <div
                   key={room.id}
-                  className={`bg-white rounded-lg border shadow-sm overflow-hidden transition-all ${
-                    status === "available"
-                      ? "border-sandstone/20"
-                      : status === "maintenance"
+                  className={`bg-white rounded-lg border shadow-sm overflow-hidden transition-all ${status === "available"
+                    ? "border-sandstone/20"
+                    : status === "maintenance"
                       ? "border-amber-400 bg-amber-50/20"
                       : "border-red-300 bg-red-50/20"
-                  }`}
+                    }`}
                 >
                   {/* Image & Header Overlay */}
                   <div className="relative h-48 w-full bg-charcoal">
                     {room.image_url || room.featuredImage ? (
                       <Image
-                        src={room.image_url || room.featuredImage}
-                        alt={room.room_name || room.name}
+                        src={"/images/rooms.png"}
+                        alt={room.room_name || room.name || "Room Image"}
                         fill
                         className="object-cover opacity-90"
                       />
@@ -182,13 +181,12 @@ export default function AdminRoomsPage() {
 
                     <div className="absolute top-3 right-3">
                       <span
-                        className={`px-3 py-1 rounded text-xs font-serif font-bold uppercase tracking-wider shadow ${
-                          status === "available"
-                            ? "bg-emerald-600 text-white"
-                            : status === "maintenance"
+                        className={`px-3 py-1 rounded text-xs font-serif font-bold uppercase tracking-wider shadow ${status === "available"
+                          ? "bg-emerald-600 text-white"
+                          : status === "maintenance"
                             ? "bg-amber-600 text-white"
                             : "bg-red-700 text-white"
-                        }`}
+                          }`}
                       >
                         {status}
                       </span>
@@ -321,11 +319,10 @@ export default function AdminRoomsPage() {
                         <button
                           onClick={() => handleStatusChange(room.id, "available")}
                           disabled={isUpdating || status === "available"}
-                          className={`py-2.5 px-3 rounded text-[11px] font-serif uppercase tracking-wider flex items-center justify-center gap-1.5 border transition-all cursor-pointer ${
-                            status === "available"
-                              ? "bg-emerald-700 text-white border-emerald-800 font-bold shadow"
-                              : "bg-cream-muted text-charcoal hover:bg-emerald-100 border-sandstone/20"
-                          }`}
+                          className={`py-2.5 px-3 rounded text-[11px] font-serif uppercase tracking-wider flex items-center justify-center gap-1.5 border transition-all cursor-pointer ${status === "available"
+                            ? "bg-emerald-700 text-white border-emerald-800 font-bold shadow"
+                            : "bg-cream-muted text-charcoal hover:bg-emerald-100 border-sandstone/20"
+                            }`}
                         >
                           <CheckCircle className="w-4 h-4 shrink-0" />
                           <span>AVAILABLE</span>
@@ -334,11 +331,10 @@ export default function AdminRoomsPage() {
                         <button
                           onClick={() => handleStatusChange(room.id, "unavailable")}
                           disabled={isUpdating || status === "unavailable"}
-                          className={`py-2.5 px-3 rounded text-[11px] font-serif uppercase tracking-wider flex items-center justify-center gap-1.5 border transition-all cursor-pointer ${
-                            status === "unavailable"
-                              ? "bg-red-700 text-white border-red-800 font-bold shadow"
-                              : "bg-cream-muted text-charcoal hover:bg-red-100 border-sandstone/20"
-                          }`}
+                          className={`py-2.5 px-3 rounded text-[11px] font-serif uppercase tracking-wider flex items-center justify-center gap-1.5 border transition-all cursor-pointer ${status === "unavailable"
+                            ? "bg-red-700 text-white border-red-800 font-bold shadow"
+                            : "bg-cream-muted text-charcoal hover:bg-red-100 border-sandstone/20"
+                            }`}
                         >
                           <XCircle className="w-4 h-4 shrink-0" />
                           <span>UNAVAILABLE</span>
@@ -347,11 +343,10 @@ export default function AdminRoomsPage() {
                         <button
                           onClick={() => handleStatusChange(room.id, "maintenance")}
                           disabled={isUpdating || status === "maintenance"}
-                          className={`py-2.5 px-3 rounded text-[11px] font-serif uppercase tracking-wider flex items-center justify-center gap-1.5 border transition-all cursor-pointer ${
-                            status === "maintenance"
-                              ? "bg-amber-600 text-white border-amber-700 font-bold shadow"
-                              : "bg-cream-muted text-charcoal hover:bg-amber-100 border-sandstone/20"
-                          }`}
+                          className={`py-2.5 px-3 rounded text-[11px] font-serif uppercase tracking-wider flex items-center justify-center gap-1.5 border transition-all cursor-pointer ${status === "maintenance"
+                            ? "bg-amber-600 text-white border-amber-700 font-bold shadow"
+                            : "bg-cream-muted text-charcoal hover:bg-amber-100 border-sandstone/20"
+                            }`}
                         >
                           <Wrench className="w-4 h-4 shrink-0" />
                           <span>MAINTAIN</span>

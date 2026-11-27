@@ -18,10 +18,15 @@
   ],
   "routes": [
     {
-      "pattern": "admin.hotelrajmahalpalace.in",
-      "custom_domain": true
+      "pattern": "admin.hotelrajmahalpalace.in/*",
+      "zone_name": "hotelrajmahalpalace.in"
     }
   ],
+  "vars": {
+    "SUPABASE_URL": "https://toqcichgylvlzxzyhled.supabase.co",
+    "NEXT_PUBLIC_SUPABASE_URL": "https://toqcichgylvlzxzyhled.supabase.co",
+    "NEXT_PUBLIC_SUPABASE_ANON_KEY": "sb_publishable_3ZEw-XUy7Y1-ewEx9x7qow_lNsG0b7d"
+  },
   "observability": {
     "enabled": true
   }
