@@ -38,7 +38,7 @@ export async function POST(req) {
       if (isUuid) {
         query = query.eq("id", roomId);
       } else {
-        query = query.or(`id.eq.${roomId},slug.eq.${roomId}`);
+        query = query.or(`slug.eq.${roomId},room_type.eq.${roomId},room_number.eq.${roomId}`);
       }
 
       const { data, error } = await query.select().maybeSingle();
