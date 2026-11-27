@@ -23,7 +23,7 @@ export default function AdminLayout({ children }) {
   const router = useRouter();
   const [mobileNavOpen, setMobileNavOpen] = useState(false);
 
-  const mainSiteUrl = process.env.NEXT_PUBLIC_MAIN_SITE_URL || "https://hotelrajmahalpalace.com";
+  const mainSiteUrl = process.env.NEXT_PUBLIC_MAIN_SITE_URL || "https://hotelrajmahalpalace.in";
 
   const navItems = [
     { name: "Overview", href: "/dashboard", icon: LayoutDashboard },
